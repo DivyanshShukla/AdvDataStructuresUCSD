@@ -22,6 +22,8 @@ public abstract class Graph {
 	public abstract void implementAddVertex();
 
 	public abstract List<Integer> getAllNeighbors();
+	
+	public abstract void implementAddEdge(int v, int u);
 
 	public void addVertex() {
 		implementAddVertex();

@@ -23,13 +23,30 @@ public class AdjMatrixGraph extends Graph {
 			 * increase the size of the adjMatrix by a factor of 2. Also, do a
 			 * deep copy of the old values to the new values.
 			 */
-
+			int newAdjMatrix[][] = new int[vertices*2][vertices*2];
+			for(int i =0;i<adjacencyMat.length;i++)
+			{
+				for(int j =0;j<adjacencyMat[i].length;j++)
+				{
+					newAdjMatrix[i][j] = adjacencyMat[i][j];
+				}
+			}
+			adjacencyMat = newAdjMatrix;
 		}
+		/*
+		 * The rows and columns of 2D array added should be 0 as the new vertex has no edge.
+		 */
 		for (int i = 0; i < adjacencyMat[vertices].length; i++) {
 			adjacencyMat[i][vertices] = 0;
 			adjacencyMat[vertices][i] = 0;
 		}
 
+	}
+	
+	@Override
+	public void implementAddEdge(int v, int u) {
+		if(v < adjacencyMat.length && u < adjacencyMat.length)
+			this.adjacencyMat[v][u] = 1;
 	}
 
 	@Override
@@ -44,5 +61,7 @@ public class AdjMatrixGraph extends Graph {
 	public void setAdjacencyMat(int adjacencyMat[][]) {
 		this.adjacencyMat = adjacencyMat;
 	}
+
+	
 
 }
